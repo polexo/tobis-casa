@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Tobis Casawi</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <button ion-button (click)="showDepartureModal()" clear>
+        {{departure.desc ? departure.desc : 'Départ de'}}
+      </button>
+    </ion-item>
+    <ion-item>
+      <button ion-button (focus)="showArrivalModal()" clear>
+        {{arrival.desc ? arrival.desc : 'Arrivée à'}}
+      </button>
+    </ion-item>
+    <ion-item>
+      <ion-label>Départ</ion-label>
+      <ion-select [(ngModel)]="timeOption">
+        <ion-option value="" selected="true">Immédiat</ion-option>
+        <ion-option value="after">Départ après </ion-option>
+        <ion-option value="before">Arrivée avant</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item [hidden]="timeOption!='after'">
+      <ion-label value="before">Choisir date</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="departureDate" min="{{departureDate}}"></ion-datetime>
+    </ion-item>
+    <ion-item [hidden]="timeOption!='after'">
+      <ion-label value="before">Choisir heure</ion-label>
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="departureDate"></ion-datetime>
+    </ion-item>
+    <ion-item [hidden]="timeOption!='before'">
+      <ion-label value="before">Choisir date</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="arrivalDate" min="{{ arrivalDate }}"></ion-datetime>
+    </ion-item>
+    <ion-item [hidden]="timeOption!='before'">
+      <ion-label value="before">Choisir heure</ion-label>
+      <ion-datetime displayFormat="HH:mm" [(ngModel)]="arrivalDate"></ion-datetime>
+    </ion-item>
+    <button ion-button full [hidden]="!isValidForm()" (click)="search()">Rechercher</button>
+  </ion-list>
+
+  <ion-card [hidden]="!resultShown" class="summary">
+
+    <button ion-button (click)="setFav()" [hidden]="isFav" class="add-fav-icon" icon-only title="Ajouter aux favoris">
+      <ion-icon name='star' item-end class="summary-icon"></ion-icon>
+    </button>
+    <ion-card-header>
+      <div item-start>Résultat</div>
+    </ion-card-header>
+
+    <ion-list>
+      <ion-item>
+        <ion-icon name="timer" item-start class="summary-icon" color="primary"></ion-icon>
+        <h2>{{results?.duration.text}}</h2>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="trending-up" item-start class="summary-icon" color="primary"></ion-icon>
+        <h2>{{results?.distance.text}}</h2>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="bus" item-start class="summary-icon" color="primary"></ion-icon>
+        <ion-badge class="bus-badge-summ" color="danger" *ngFor="let bus of buses">{{ bus }}</ion-badge>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="walk" item-start class="summary-icon" color="primary"></ion-icon>
+        <h2>{{ walks }}</h2>
+      </ion-item>
+      <ion-item-divider></ion-item-divider>
+      <ion-list-header (click)="showHideDetails()">
+        <h2>Afficher le Détail</h2>
+        <ion-icon item-end name="add" *ngIf="!detailsShown"></ion-icon>
+        <ion-icon item-end name="remove" *ngIf="detailsShown"></ion-icon>
+      </ion-list-header>
+    </ion-list>
+    <ion-list [style.display]="detailsShown ? 'block': 'none'">
+      <div *ngFor="let item of results?.steps" tappable>
+        <div ion-item *ngIf="item?.travel_mode.toString() == 'TRANSIT'" text-wrap>
+          <ion-icon name="bus" class="detail-icon" color="primary" item-start>
+          </ion-icon>
+          <h3>{{ item.instructions }}</h3>
+          <h2>De la station - {{ item.transit?.departure_stop.name }}</h2>
+          <h2>Jusqu'à la station - {{ item.transit?.arrival_stop.name }}</h2>
+
+        </div>
+        <div ion-item *ngIf="item?.travel_mode.toString() == 'WALKING'" text-wrap>
+          <ion-icon name="walk" class="detail-icon" color="primary" item-start></ion-icon>
+          <h3>{{ item.instructions }}({{ item.duration.text }})</h3>
+
+        </div>
+      </div>
+      <ion-item>
+
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

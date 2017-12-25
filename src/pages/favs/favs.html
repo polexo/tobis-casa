@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Favoris
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let fav of favs">
+      <ion-item (click)="useFav(fav)" tappable>
+        <ion-avatar item-start color="primary">
+          <img src="assets/itinerary.png">
+        </ion-avatar>
+        <h3>
+          {{fav.departure?.desc}}
+        </h3>
+        <h3>
+          {{fav.arrival?.desc}}
+        </h3>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button (click)="deleteFav(fav.id)" title="Supprimer" clear>
+        <ion-icon color="danger" name="trash"></ion-icon>
+      </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
