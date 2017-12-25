@@ -1,6 +1,9 @@
 
 # Tobis Casa
-[![LOGO](src/assets/logo.png)]()
+<a href="https://aimeos.org/">
+    <img src="src/assets/logo.png" alt="Tobis casawi" title="Tobis" align="center" height="60" />
+</a>
+br/>
 Afficher les ligne de bus à emprunter pour un trajet dans la ville de casablanca
 
 ## Motivation
@@ -10,10 +13,10 @@ Un rendez-vous quelques pars dans un quartier où vous n'avez jamais mis les pie
 Déplacer vous moins cher dans la ville de casablanca. Slit OHO :)
 
 ## Features
-[x] => Saisie d'un iteneraire point de départ et d'arrivée.
-[x] => Spécification d'une heure et/ou une date d'arrivée
-[x] => Se géolocaliser comme point de départ.
-[x] => Enregistrement des trajets favoris(Maison-boulot)
+- [x] => Saisie d'un iteneraire point de départ et d'arrivée.
+- [x] => Spécification d'une heure et/ou une date d'arrivée
+- [x] => Se géolocaliser comme point de départ.
+- [x] => Enregistrement des trajets favoris(Maison-boulot)
 
 ## Current Version
 0.0.1
