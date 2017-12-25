@@ -1,9 +1,9 @@
 
 # Tobis Casa
-<a href="https://aimeos.org/">
-    <img src="src/assets/logo.png" alt="Tobis casawi" title="Tobis" align="center" height="60" />
+<a href="https://polexo.info/">
+    <img src="src/assets/logo.png" alt="Tobis casawi" title="Tobis" align="center" height="150" />
 </a>
-br/>
+<br/>
 Afficher les ligne de bus à emprunter pour un trajet dans la ville de casablanca
 
 ## Motivation
