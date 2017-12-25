@@ -8,7 +8,7 @@ Afficher les ligne de bus à emprunter pour un trajet dans la ville de casablanc
 
 ## Motivation
 
-Mare de chercher un autre moyen car votre bus vient de zapper la station.
+Marre de chercher un autre moyen car votre bus vient de zapper la station.
 Un rendez-vous quelques pars dans un quartier où vous n'avez jamais mis les pieds.
 Déplacer vous moins cher dans la ville de casablanca. Slit OHO :)
 
